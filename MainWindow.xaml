@@ -19,7 +19,7 @@
         <Style TargetType="TextBox">
             <Setter Property="Padding" Value="4,2" />
             <Setter Property="Padding" Value="4,2" />
-            <Setter Property="BorderBrush" Value="LightBlue" />
+            <Setter Property="BorderBrush" Value="#FF5FB574" />
             <Setter Property="BorderThickness" Value="2" />
             <Setter Property="Background" Value="White" />
         </Style>
@@ -33,7 +33,11 @@
     <TabControl x:Name="tcMain" Margin="10">
         <TabItem Header="Apprends" x:Name="tiApp">
             <Grid>
-                <GroupBox Header="Mode" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel  Margin="10" Background="LightYellow" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock x:Name="descZoneApprend" FontSize="12" Padding="4" Text="sdfsdfsdfsdf" />
+                </StackPanel>
+
+                <GroupBox Header="Mode" Margin="14,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <StackPanel Orientation="Horizontal">
                         <RadioButton GroupName="rbMajMin" x:Name="rb_mm" Content="MAJUSCULE / minuscule" Padding="8,-2,8,0" Margin="10" IsChecked="True" Click="rb_click" />
                         <RadioButton GroupName="rbMajMin" x:Name="rb_maj" Content="MAJUSCULE" Padding="8,-2,8,0" Margin="10" Click="rb_click" />
@@ -41,7 +45,7 @@
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Margin="10,77,0,0" Width="562" Padding="5" HorizontalAlignment="Left" VerticalAlignment="Top" Background="AliceBlue" Height="80">
+                <GroupBox Margin="10,140,0,0" Width="562" Padding="5" HorizontalAlignment="Left" VerticalAlignment="Top" Background="AliceBlue" Height="80">
                     <GroupBox.Header>
                         <Border Width="280" Background="AliceBlue" BorderBrush="LightGray" BorderThickness="1" CornerRadius="2">
                             <TextBlock x:Name="tbCtx" Text="" Margin="4" Padding="8,2" />
@@ -50,28 +54,31 @@
                     <TextBlock x:Name="tblTexte" Text="" FontWeight="Bold" FontSize="24" MouseLeftButtonUp="tblTexte_MouseDown" TextAlignment="Center" />
                 </GroupBox>
 
-                <TextBox x:Name="tbTexte" Text="" FontSize="18" Margin="10,162,0,0" Width="562"  HorizontalAlignment="Left" VerticalAlignment="Top" KeyUp="tbTexte_KeyUp" />
+                <TextBox x:Name="tbTexte" Text=""  FontSize="18" Margin="10,240,0,0" Width="562"  HorizontalAlignment="Left" VerticalAlignment="Top" KeyUp="tbTexte_KeyUp" />
 
-                <uc:ucControlStatut x:Name="bdRes"  HorizontalAlignment="Left" Margin="580,162,0,0"  VerticalAlignment="Top" />
+                <uc:ucControlStatut x:Name="bdRes"  HorizontalAlignment="Left" Margin="580,240,0,0"  VerticalAlignment="Top" />
 
-                <Button x:Name="btSuiv" Content="Suivant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="740,165,0,0" IsEnabled="False" Click="btSuiv_Click" />
+                <Button x:Name="btSuiv" Content="Suivant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="740,242,0,0" IsEnabled="False" Click="btSuiv_Click" />
 
-                <StackPanel x:Name="spAccentsMaj" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,210,0,0" />
-                <StackPanel x:Name="spAccentsMin" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,210,0,0" />
+                <StackPanel x:Name="spAccentsMaj" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,280,0,0" />
+                <StackPanel x:Name="spAccentsMin" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,280,0,0" />
 
-                <Border Margin="10,250,0,0" Width="562" Padding="4" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" CornerRadius="2" Background="AliceBlue">
+                
+
+                <uc:ucControlStatut x:Name="ucCapLock"  HorizontalAlignment="Left" Margin="490,80,0,0"  VerticalAlignment="Top" />
+                <uc:ucControlStatut x:Name="ucNumLock" Visibility="Hidden"  HorizontalAlignment="Left" Margin="180,0,0,10"  VerticalAlignment="Bottom" />
+
+                <Border Margin="10,330,0,0" Width="562" Padding="4" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" CornerRadius="2" Background="AliceBlue">
                     <TextBlock x:Name="resultats" Text="" />
                 </Border>
+                
+                <Button x:Name="btSupprimeReussite" Content="Effacer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="580,330,0,0"  IsEnabled="False" Click="btSupprimeReussite_Click" />
 
-                <uc:ucControlStatut x:Name="ucCapLock"  HorizontalAlignment="Left" Margin="486,29,0,0"  VerticalAlignment="Top" />
-                <uc:ucControlStatut x:Name="ucNumLock" Visibility="Hidden"  HorizontalAlignment="Left" Margin="180,0,0,10"  VerticalAlignment="Bottom" />
-                <Button x:Name="btSupprimeReussite" Content="Effacer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="580,250,0,0"  IsEnabled="False" Click="btSupprimeReussite_Click" />
-
-                <Rectangle x:Name="recColor" HorizontalAlignment="Left" Height="60" Margin="580,95,0,0" Stroke="Gray"  RadiusX="4" RadiusY="4" StrokeThickness="1"  VerticalAlignment="Top" Width="60"/>
+                <Rectangle x:Name="recColor" HorizontalAlignment="Left" Height="60" Margin="582,160,0,0" Stroke="Gray"  RadiusX="4" RadiusY="4" StrokeThickness="1"  VerticalAlignment="Top" Width="60"/>
 
             </Grid>
         </TabItem>
-        <TabItem Header="Phrases" x:Name="tiPhrases">
+        <TabItem Header=" - Mots et Phrases - " x:Name="tiPhrases">
             <DockPanel>
                 <WrapPanel DockPanel.Dock="Left" Width="180">
                     <Expander Header="Filtrer" IsExpanded="True" Width="160" Margin="10">
@@ -189,7 +196,7 @@
                                 </StackPanel>
                             </RadioButton.Content>
                         </RadioButton>
-                        
+
                         <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="2"  Padding="0" Margin="4">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock x:Name="tbToucheAtt" Text="." Width="24" TextAlignment="Center" Foreground="Red" Margin="8,0" />
@@ -207,10 +214,10 @@
                     <TextBlock Text="Touches : " />
                     <TextBlock x:Name="TB_KEY" Width="80" />
                 </StackPanel>
-                
+
             </TabItem.Header>
             <Grid Margin="10" Background="AliceBlue" x:Name="wpTouches" KeyDown="touche_KeyDown" KeyUp="touche_KeyUp">
-                
+
             </Grid>
         </TabItem>
     </TabControl>

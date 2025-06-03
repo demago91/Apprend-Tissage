@@ -33,6 +33,9 @@ namespace Apprend_Tissage
         private readonly string FileLogs = "logs.json";
         private readonly string FilePrefs = "prefs.json";
         private readonly string FilePhrases = "phrases.json";
+        private readonly string FileTextes = "textes.json";
+
+        AppTextes _textes = new();
 
         Phrase? _phrase = null;
 
@@ -98,6 +101,16 @@ namespace Apprend_Tissage
             MainWindow_PreviewKeyDown(null, null);
 
             ChargerPhrases();
+
+            string NL = Environment.NewLine;
+
+            // Définie les textes des controles
+
+            _textes.Ajouter("descZoneApprend", $"Bonjour, bienvenue dans l'application Apprend-Tissage, apprends à taper les mots sur le clavier.{NL}Sélectionne les mots depuis l'onglet a coté, ou c'est écrit 'Mots et Phrases'.");
+            descZoneApprend.Text = _textes.Get("descZoneApprend");
+
+            _textes.Ajouter("tooltip_texte", $"Appuie sur la touche 'entrée'{NL}dès que tu as réussie à écrire le mot correctement.");
+            tbTexte.ToolTip = _textes.Get("tooltip_texte");
 
             var cboxOui = new CboxItem("Oui", 1);
             var cboxNon = new CboxItem("Non", 0);
@@ -244,7 +257,7 @@ namespace Apprend_Tissage
         {
             var phrases = FiltrerPhrases();
 
-            tiPhrases.Header = $" - {phrases.Count} Phrases - ";
+            tiPhrases.Header = $" - Mots et Phrases : {phrases.Count} - ";
 
             List<Phrase> list = new();
 
